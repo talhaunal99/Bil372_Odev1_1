@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 12 Kas 2020, 23:03:19
+-- Üretim Zamanı: 13 Kas 2020, 07:52:43
 -- Sunucu sürümü: 5.7.31
 -- PHP Sürümü: 7.3.21
 
@@ -213,11 +213,14 @@ CREATE TABLE IF NOT EXISTS `flow` (
   `Source_ORG_ID` int(11) NOT NULL,
   `Target_LOT_ID` int(11) NOT NULL,
   `Target_ORG_ID` int(11) NOT NULL,
-  `BRAND_BARCODE` int(11) NOT NULL,
+  `BRAND_BARCODE` char(13) NOT NULL,
   `Quantity` int(11) NOT NULL,
   `FlowDate` date NOT NULL,
-  PRIMARY KEY (`Source_LOT_ID`,`Source_ORG_ID`,`Target_LOT_ID`,`Target_ORG_ID`,`BRAND_BARCODE`,`Quantity`,`FlowDate`),
-  KEY `Source_ORG_ID` (`Source_ORG_ID`)
+  PRIMARY KEY (`Source_LOT_ID`,`Source_ORG_ID`,`Target_LOT_ID`,`Target_ORG_ID`,`BRAND_BARCODE`) USING BTREE,
+  KEY `Source_ORG_ID` (`Source_ORG_ID`),
+  KEY `flow_ibfk_3` (`Target_LOT_ID`),
+  KEY `flow_ibfk_4` (`Target_ORG_ID`),
+  KEY `flow_ibfk_5` (`BRAND_BARCODE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -236,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `manufacturers` (
   PRIMARY KEY (`MANUFACTURER_ID`),
   KEY `CITY_CODE` (`CITY_CODE`),
   KEY `COUNTRY_CODE` (`COUNTRY_CODE`)
-) ENGINE=InnoDB AUTO_INCREMENT=171101055 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Tablo döküm verisi `manufacturers`
@@ -474,7 +477,10 @@ ALTER TABLE `country_city`
 --
 ALTER TABLE `flow`
   ADD CONSTRAINT `flow_ibfk_1` FOREIGN KEY (`Source_LOT_ID`) REFERENCES `brand_orgs` (`LOT_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `flow_ibfk_2` FOREIGN KEY (`Source_ORG_ID`) REFERENCES `organisations` (`ORG_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `flow_ibfk_2` FOREIGN KEY (`Source_ORG_ID`) REFERENCES `organisations` (`ORG_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `flow_ibfk_3` FOREIGN KEY (`Target_LOT_ID`) REFERENCES `brand_orgs` (`LOT_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `flow_ibfk_4` FOREIGN KEY (`Target_ORG_ID`) REFERENCES `organisations` (`ORG_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `flow_ibfk_5` FOREIGN KEY (`BRAND_BARCODE`) REFERENCES `product_brands` (`BRAND_BARCODE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Tablo kısıtlamaları `manufacturers`
