@@ -28,3 +28,5 @@ phpMyAdmin
 Sürüm bilgisi: 5.0.2 <br />
 Sunucu: MySQL:3306 <br />
 Sunucu bağlantısı karşılaştırması: utf8mb4_unicode_ci <br />
+
+--> USER MANUAL için usermanual.pdf dosyasına bakınız.
