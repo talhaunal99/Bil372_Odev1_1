@@ -29,6 +29,8 @@ Sürüm bilgisi: 5.0.2 <br />
 Sunucu: MySQL:3306 <br />
 Sunucu bağlantısı karşılaştırması: utf8mb4_unicode_ci <br />
 
+--------------------------------------------------------
+
 Tüm veritabanı kodları uygulamaodevi.sql dosyası içindedir. <br />
 WAMP Server ve MySQL 8.0 Workbench kurulumunun ardından tarayıcıya localhost/phpmyadmin linkine giriş yapılır. Yukarıda verilen user ve password girişi yapıldıktan sonra, sol kenardan yeni bir veritabanı oluşturulur. Oluşturulan veritabanının içine girildiğinde üst kısımda içe aktar seçeneği bulunmaktadır. Oraya yüklenecek dosya "uygulamaodevi.sql". Ardından WAMP Server'ın www klasörüne uygulamaodevi adı altında klasör açılır. uygulamaodevi klasörüne php dosyaları atılır. Tarayıcıdan localhost/uygulamaodevi/ linkine giriş yapılır. Gelecek ekran login sayfasıdır. <br />
 
