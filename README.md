@@ -39,3 +39,5 @@ WAMPSERVER Linki --> https://sourceforge.net/projects/wampserver/ <br />
 MySQL Linki --> https://dev.mysql.com/downloads/ <br />
 
 --> USER MANUAL için usermanual.pdf dosyasına bakınız.
+
+--> İstatistikler için gitstasofBil372_Odev1_1 klasöründeki index dosyasına bakınız.
